@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', function(){
+    return redirect('/tasks');
+});
+
+Route::get('/tasks', 'Taskcontroller@index');
+
+Route::post('/tasks', 'Taskcontroller@store');
+
+Route::delete('/tasks/{id}', 'Taskcontroller`destroy');
+
+\URL::forceSchema('https');
