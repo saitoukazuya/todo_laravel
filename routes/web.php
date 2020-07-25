@@ -19,10 +19,11 @@ Route::get('/', function(){
     return redirect('/tasks');
 });
 
-Route::get('/tasks', 'Taskcontroller@index');
+Route::get('/tasks', 'TaskController@index');
 
-Route::post('/tasks', 'Taskcontroller@store');
+Route::post('/tasks', 'TaskController@store');
 
-Route::delete('/tasks/{id}', 'Taskcontroller`destroy');
+Route::delete('/tasks/{id}', 'TaskController@destroy');
 
-\URL::forceSchema('https');
+
+\URL::forceScheme('https');
