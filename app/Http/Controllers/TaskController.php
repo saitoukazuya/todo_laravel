@@ -12,10 +12,15 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
+    //  一覧表示させる目的
     public function index()
     {
+        // TaskモデルのTask:all()メソッドを呼び出し、全てのタスクをDBから取得する
         $tasks = Task::all();
         
+        // 'tasks'はファイル名、[]の中は連想配列で、['キー'=>$tasks]となっている
+        // $tasksでタスク一覧が表示できる
         return view('tasks', ['tasks'=>$tasks]);
     }
 
@@ -24,6 +29,8 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
+     
     public function create()
     {
         //
@@ -35,12 +42,25 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     
+     // タスクの追加、保存を行う目的
     public function store(Request $request)
     {
+        //Taskオブジェクト作成
         $task = new Task;
         
+        // nameプロパティにフォームから送信されたnameパラメータを設定する
         $task->name = request('name');
+        // データベースに保存する
         $task->save();
+        
+        // 次回はマイグレーションファイルを変更したところを追記する
+        
+        
+        
+        
+        
+        // '/tasks'にリダイレクトして一覧表示を行う
         return redirect('/tasks');
     }
 
@@ -50,6 +70,8 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
+     
+     
     public function show(Task $task)
     {
         //
@@ -61,6 +83,8 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
+     
+     
     public function edit(Task $task)
     {
         //
@@ -73,6 +97,8 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
+     
+     
     public function update(Request $request, Task $task)
     {
         //
@@ -84,10 +110,15 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
+     
+    //  削除する目的
     public function destroy(Request $request, $id, Task $task)
     {
+        // モデルのTask::find()メソッドを呼び出して、タスクID($id)に対応するオブジェクトを取得する
         $task = Task::find($id);
+        // 削除する
         $task->delete();
+        // リダイレクトする
         return redirect('/tasks');
     }
 }

@@ -15,14 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+# /tasksにリダイレクトさせる
 Route::get('/', function(){
     return redirect('/tasks');
 });
 
+#　TaskControllerのindexメソッドを呼び出している
 Route::get('/tasks', 'TaskController@index');
 
+# TaskControllerのstoreメソッドを呼び出している
 Route::post('/tasks', 'TaskController@store');
 
+# destroyメソッドを呼び出している
 Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 

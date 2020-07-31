@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>Task List</h1>
-    
+    <!--タスク追加のためのフォーム-->
     <form action="/tasks" method="POST" class="form-horizontal">
         
         {{ csrf_field() }}
@@ -15,6 +15,7 @@
         <label for="task" class="col-sm-3control-label">Task</label>
         
             <div class="col-sm-6">
+                <!--タスクの名前を入力できるようにしている-->
                 <input type="text" name="name" id="task-name" class="form-control">
             </div>
             
@@ -37,7 +38,7 @@
     </form>
     
     <!-- Current Tasks -->
-    
+    <!--タスクの一覧表示-->
     <h2>Current Tasks</h2>
     
     <table class="table table-striped task-table">
@@ -52,6 +53,7 @@
                     <!-- Task name -->
                     
                     <td>
+                        <!--タスクのnameプロパティを取得することでDBのnameカラムの値を表示する-->
                         <div>{{ $task->name }}</div>
                     </td>
                     
@@ -59,6 +61,7 @@
                         <form action="/tasks/{{ $task->id }}" method="POST"/>
                             {{ csrf_field() }}
                             
+                            <!--擬似的にdeleteメソッドとして呼び出している-->
                             {{ method_field('DELETE') }}
                             
                             <button>Delete Task</button>
