@@ -29,6 +29,7 @@
         <label for="color" class="col-sm-3control-label">color</label>    
             <div class="col-sm-6">
                 <select name="color">
+                    <option value="1" >-色を選択してください-</option>
                     <option value="1" >赤色</option>
                     <option value="2" >黄色</option>
                     <option value="3" >緑色</option>
@@ -41,16 +42,17 @@
         <label for="category" class="col-sm-3control-label">category</label>    
             <div class="col-sm-6">
                 <select name="category">
-                    <option value="1" >急務（最優先）</option>
-                    <option value="2" >重要</option>
-                    <option value="3" >優先度（中）</option>
-                    <option value="4" >作業</option>
+                    <option value="1" >-カテゴリを選択してください-</option>
+                    <option value="1" >重要</option>
+                    <option value="2" >事務</option>
+                    <option value="3" >作業</option>
+                    <option value="4" >急務</option>
                 </select> 
             </div>
         </div>
         
         <div class="form-group">
-        <label for="limit" class="col-sm-3control-label">limit</label>    
+        <label for="limit" class="col-sm-3control-label">完了期限（入力またはカレンダーから選択）</label>    
             <div class="col-sm-6">
                 <input name="limit" type="date">
             </div>
