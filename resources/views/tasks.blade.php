@@ -30,9 +30,9 @@
             <div class="col-sm-6">
                 <select name="color">
                     <option value="1" >赤色</option>
-                    <option value="2" >青色</option>
-                    <option value="3" >黄色</option>
-                    <option value="4" >緑色</option>
+                    <option value="2" >黄色</option>
+                    <option value="3" >緑色</option>
+                    <option value="4" >青色</option>
                 </select> 
             </div>
         </div>
@@ -41,10 +41,10 @@
         <label for="category" class="col-sm-3control-label">category</label>    
             <div class="col-sm-6">
                 <select name="category">
-                    <option value="1" >訓練</option>
-                    <option value="2" >車両</option>
-                    <option value="3" >団</option>
-                    <option value="4" >水利</option>
+                    <option value="1" >急務（最優先）</option>
+                    <option value="2" >重要</option>
+                    <option value="3" >優先度（中）</option>
+                    <option value="4" >作業</option>
                 </select> 
             </div>
         </div>
