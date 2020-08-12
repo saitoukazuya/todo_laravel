@@ -31,3 +31,6 @@ Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 
 \URL::forceScheme('https');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

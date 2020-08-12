@@ -22,7 +22,7 @@ class CreateTasksTable extends Migration
             
             // 7月31日追記
             // 整数を登録できる->新しいカラムを追加する時に便利
-            $table->integer('finish_flag');
+            $table->integer('finish_flag')->default(0);
             // 色のときも数字で管理すると変更が楽になる
             $table->integer('color');
             // カテゴリ

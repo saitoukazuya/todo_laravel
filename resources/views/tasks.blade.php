@@ -4,6 +4,9 @@
 
     <h1>Task List</h1>
     <!--タスク追加のためのフォーム-->
+    @guest
+    @else
+    
     <form action="/tasks" method="POST" class="form-horizontal">
         
         {{ csrf_field() }}
@@ -21,6 +24,38 @@
             
         </div>
         
+        <div class="form-group">
+        
+        <label for="color" class="col-sm-3control-label">color</label>    
+            <div class="col-sm-6">
+                <select name="color">
+                    <option value="1" >赤色</option>
+                    <option value="2" >青色</option>
+                    <option value="3" >黄色</option>
+                    <option value="4" >緑色</option>
+                </select> 
+            </div>
+        </div>
+        
+        <div class="form-group">
+        <label for="category" class="col-sm-3control-label">category</label>    
+            <div class="col-sm-6">
+                <select name="category">
+                    <option value="1" >訓練</option>
+                    <option value="2" >車両</option>
+                    <option value="3" >団</option>
+                    <option value="4" >水利</option>
+                </select> 
+            </div>
+        </div>
+        
+        <div class="form-group">
+        <label for="limit" class="col-sm-3control-label">limit</label>    
+            <div class="col-sm-6">
+                <input name="limit" type="date">
+            </div>
+        </div>
+        
         <!-- Add Task Button -->
         
         <div class="form-group">
@@ -36,7 +71,7 @@
         </div>
         
     </form>
-    
+    @endguest
     <!-- Current Tasks -->
     <!--タスクの一覧表示-->
     <h2>Current Tasks</h2>

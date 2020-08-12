@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             
-            $table->integer('group_id');
+            $table->integer('group_id')->nullable();
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -51,6 +52,10 @@ class TaskController extends Controller
         
         // nameプロパティにフォームから送信されたnameパラメータを設定する
         $task->name = request('name');
+        $task->category = request('category');
+        $task->color = request('color');
+        $task->limit = request('limit');
+        $task->user_id = Auth::user()->id;
         // データベースに保存する
         $task->save();
         
