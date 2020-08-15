@@ -11,22 +11,27 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//  topページへ
 Route::get('/', function () {
-    return view('welcome');
+    return view('/top');
 });
 
-# /tasksにリダイレクトさせる
-Route::get('/', function(){
+//  /tasksにリダイレクトさせる
+Route::get('/tasks', function(){
     return redirect('/tasks');
 });
 
-#　TaskControllerのindexメソッドを呼び出している
+// 　TaskControllerのindexメソッドを呼び出している
 Route::get('/tasks', 'TaskController@index');
 
-# TaskControllerのstoreメソッドを呼び出している
+//  TaskControllerのstoreメソッドを呼び出している
 Route::post('/tasks', 'TaskController@store');
 
-# destroyメソッドを呼び出している
+//  destroyメソッドを呼び出している
 Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 
