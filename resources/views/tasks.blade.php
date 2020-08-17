@@ -3,6 +3,10 @@
 @section('content')
 
     <h1>Task List</h1>
+    <div>
+    <form action="/" method="GET"/>
+        <button>return top</button>
+    </div>
     <!--タスク追加のためのフォーム-->
     @guest
     @else
@@ -65,7 +69,7 @@
             <div class="col-sm-offset-3 col-sm-6">
                 
                 <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Task
+                    <i class="fa fa-plus">Add Task</i>
                 </button>
                 
             </div>
