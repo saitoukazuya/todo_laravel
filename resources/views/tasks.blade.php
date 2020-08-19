@@ -4,9 +4,11 @@
 
     <h1>Task List</h1>
     <div>
-    <form action="/" method="GET"/>
-        <button>return top</button>
+    <form action="/" method="GET">
+        <button>topへ</button>
+    </form>
     </div>
+    
     <!--タスク追加のためのフォーム-->
     @guest
     @else
@@ -33,7 +35,7 @@
         <label for="color" class="col-sm-3control-label">color</label>    
             <div class="col-sm-6">
                 <select name="color">
-                    <option value="1" >-色を選択してください-</option>
+                    <option value="" >-色を選択してください-</option>
                     <option value="1" >赤色</option>
                     <option value="2" >黄色</option>
                     <option value="3" >緑色</option>
@@ -46,7 +48,7 @@
         <label for="category" class="col-sm-3control-label">category</label>    
             <div class="col-sm-6">
                 <select name="category">
-                    <option value="1" >-カテゴリを選択してください-</option>
+                    <option value="" >-カテゴリを選択してください-</option>
                     <option value="1" >重要</option>
                     <option value="2" >事務</option>
                     <option value="3" >作業</option>
@@ -65,15 +67,11 @@
         <!-- Add Task Button -->
         
         <div class="form-group">
-            
             <div class="col-sm-offset-3 col-sm-6">
-                
                 <button type="submit" class="btn btn-default">
                     <i class="fa fa-plus">Add Task</i>
                 </button>
-                
             </div>
-            
         </div>
         
     </form>
@@ -95,9 +93,13 @@
                     
                     <td>
                         <!--タスクのnameプロパティを取得することでDBのnameカラムの値を表示する-->
+                        <!--ここにリンクを追加する予定　8月19日-->
                         <div>{{ $task->name }}</div>
                     </td>
-                    
+                    <td>
+                        <a href='/tasks/{{ $task->id }}'>詳細</a>
+                        
+                    </td>
                     <td>
                         <form action="/tasks/{{ $task->id }}" method="POST"/>
                             {{ csrf_field() }}

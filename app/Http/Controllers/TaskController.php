@@ -32,21 +32,12 @@ class TaskController extends Controller
      */
      
      
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
      
      // タスクの追加、保存を行う目的
     public function store(Request $request)
     {
+        // dd($request);
         //Taskオブジェクト作成
         $task = new Task;
         
@@ -58,13 +49,7 @@ class TaskController extends Controller
         $task->user_id = Auth::user()->id;
         // データベースに保存する
         $task->save();
-        
-        // 次回はマイグレーションファイルを変更したところを追記する
-        
-        
-        
-        
-        
+
         // '/tasks'にリダイレクトして一覧表示を行う
         return redirect('/tasks');
     }
@@ -77,9 +62,11 @@ class TaskController extends Controller
      */
      
      
-    public function show(Task $task)
+    public function show($id)
     {
-        //
+        $task = Task::find($id);
+        
+        return view('tasks.show', ['task' => $task]);
     }
 
     /**

@@ -83,7 +83,8 @@
                 <div class="title m-b-md">
                     ToDo_Laravel
                 </div>
-
+                
+                <!--8/14変更した-->
                 <div class="links">
                     <a href="{{ route('register') }}">新規登録</a>
                     <a href="{{ route('login') }}">ログイン</a>
