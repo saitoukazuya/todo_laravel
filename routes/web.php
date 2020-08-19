@@ -28,11 +28,17 @@ Route::get('/', function () {
 
 // 　TaskControllerのindexメソッドを呼び出している
 Route::get('/tasks', 'TaskController@index');
-Route::middleware(['auth'])->group(function () {    
+
+
+Route::middleware(['auth'])->group(function () {  
+    
 //  TaskControllerのstoreメソッドを呼び出している
 Route::post('/tasks', 'TaskController@store');
+
 //  destroyメソッドを呼び出している
 Route::delete('/tasks/{id}', 'TaskController@destroy');
+
+Route::get('/edit/{id}', 'TaskController@edit');
 });
 
 

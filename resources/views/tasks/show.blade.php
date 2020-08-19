@@ -8,6 +8,8 @@
         <!--Taskモデルの関数を使用-->
         <p>色：{{ $task->color_show() }}</p>
         <p>期限：{{ $task->limit }}</p>
+        
+        <p>詳細：{{ $task->details }}</p>
     </div>
     <div>
         <form action="/tasks" method="GET">

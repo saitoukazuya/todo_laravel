@@ -64,6 +64,14 @@
             </div>
         </div>
         
+        <!--詳細を書き入れる部分-->
+        <div class="form-group">
+        <label for="details" class="col-sm-3control-label">詳細内容</label>
+            <div class="col-sm-6">
+                <input type="textarea" name="details"/>
+            </div>
+        </div>
+        
         <!-- Add Task Button -->
         
         <div class="form-group">
@@ -99,6 +107,9 @@
                     <td>
                         <a href='/tasks/{{ $task->id }}'>詳細</a>
                         
+                    </td>
+                    <td>
+                        <a href="/edit/{{ $task->id }}">編集</a>
                     </td>
                     <td>
                         <form action="/tasks/{{ $task->id }}" method="POST"/>

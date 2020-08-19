@@ -47,6 +47,7 @@ class TaskController extends Controller
         $task->color = request('color');
         $task->limit = request('limit');
         $task->user_id = Auth::user()->id;
+        $task->details = request('details');
         // データベースに保存する
         $task->save();
 
@@ -77,9 +78,13 @@ class TaskController extends Controller
      */
      
      
-    public function edit(Task $task)
+    public function edit($id)
     {
-        //
+        $task = Task::find($id);
+        if (empty($task)) {
+            abort(404);
+        }
+        return view('edit', ['task' => $task]);
     }
 
     /**
@@ -93,7 +98,14 @@ class TaskController extends Controller
      
     public function update(Request $request, Task $task)
     {
-        //
+        $this->validate($request, Task::$task);
+        
+        $task = Task::find($request->id);
+        $task = $request->all();
+        unset($task['_token']);
+        
+        $task->fill($task)->save();
+        return redirect('/tasks');
     }
 
     /**
