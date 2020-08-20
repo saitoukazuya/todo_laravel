@@ -27,7 +27,7 @@ Route::get('/', function () {
 // });
 
 // 　TaskControllerのindexメソッドを呼び出している
-Route::get('/tasks', 'TaskController@index');
+Route::get('/tasks', 'TaskController@index')->name('tasks');
 
 
 Route::middleware(['auth'])->group(function () {  

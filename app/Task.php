@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    
+    // protected $guarded = array('id') ;
+    // public static $rules = array(
+    //     'title' => 'required',
+    //     'body' => 'required',
+    //     );
+        
+    
     // 8月19日作成
     public function color_show() {
         // migrationファイルのカラムを書く

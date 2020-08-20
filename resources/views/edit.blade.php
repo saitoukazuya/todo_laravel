@@ -6,6 +6,7 @@
     <div>
         <form action="/tasks" method="GET">
             <button>Task Listへ</button>
+            <!--<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>-->
         </form>
     </div>
     

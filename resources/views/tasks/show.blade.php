@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <h1>タスク詳細ページ</h1>
     <div>
         <p>タスク名：{{ $task->name }} </p>
         <!--Taskモデルの関数を使用-->

@@ -4,9 +4,9 @@
 
     <h1>Task List</h1>
     <div>
-    <form action="/" method="GET">
-        <button>topへ</button>
-    </form>
+    <!--<form action="/" method="GET">-->
+        <a href='/' class='btn btn-primary'>Topへ</a>
+    <!--</form>-->
     </div>
     
     <!--タスク追加のためのフォーム-->
@@ -76,7 +76,7 @@
         
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
+                <button type="button" class='btn btn-outline-primary'>
                     <i class="fa fa-plus">Add Task</i>
                 </button>
             </div>
@@ -88,7 +88,7 @@
     <!--タスクの一覧表示-->
     <h2>Current Tasks</h2>
     
-    <table class="table table-striped task-table">
+    <table class="table table-striped table-hover">
         <thead>
             <th>Task</th><th>&nbsp;</th>
         </thead>
@@ -105,11 +105,12 @@
                         <div>{{ $task->name }}</div>
                     </td>
                     <td>
-                        <a href='/tasks/{{ $task->id }}'>詳細</a>
-                        
+                        <a href='/tasks/{{ $task->id }}' class='btn btn-primary'>詳細</a>
+                        <!--<button type="button" class="btn btn-primary">詳細</button>-->
                     </td>
                     <td>
-                        <a href="/edit/{{ $task->id }}">編集</a>
+                        <a href="/edit/{{ $task->id }}" class='btn btn-outline-primary'>編集</a>
+                        <!--<button type="button" class="btn btn-outline-primary">編集</button>-->
                     </td>
                     <td>
                         <form action="/tasks/{{ $task->id }}" method="POST"/>
@@ -118,7 +119,7 @@
                             <!--擬似的にdeleteメソッドとして呼び出している-->
                             {{ method_field('DELETE') }}
                             
-                            <button>Delete Task</button>
+                            <button type="button" class="btn btn-primary">削除</button>
                         </form>
                     </td>
                     
