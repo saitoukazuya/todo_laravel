@@ -8,7 +8,6 @@
         <a href='/' class='btn btn-primary'>Topへ</a>
     <!--</form>-->
     </div>
-    
     <!--タスク追加のためのフォーム-->
     @guest
     @else

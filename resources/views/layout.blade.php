@@ -18,6 +18,7 @@
     </head>
     
     <body>
+        <style>body {padding-top: 80px;}</style>
         @include('nav')
         <div class="container">
             @yield('content')
