@@ -30,7 +30,7 @@ class CreateTasksTable extends Migration
             // 期限設定 　日付型
             $table->date('limit');
             $table->integer('user_id');
-            // 追記8月19日
+            // 追記8月19日 詳細
             $table->string('details')->nullable()->default("");
         });
     }
