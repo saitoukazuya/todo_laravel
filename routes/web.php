@@ -32,13 +32,14 @@ Route::get('/tasks', 'TaskController@index')->name('tasks');
 
 Route::middleware(['auth'])->group(function () {  
     
-//  TaskControllerのstoreメソッドを呼び出している
-Route::post('/tasks', 'TaskController@store');
+    //  TaskControllerのstoreメソッドを呼び出している
+    Route::post('/tasks', 'TaskController@store');
+    
+    //  destroyメソッドを呼び出している
+    Route::delete('/tasks/{id}', 'TaskController@destroy');
+    
+    Route::get('/edit/{id}', 'TaskController@edit');
 
-//  destroyメソッドを呼び出している
-Route::delete('/tasks/{id}', 'TaskController@destroy');
-
-Route::get('/edit/{id}', 'TaskController@edit');
 });
 
 
@@ -50,4 +51,6 @@ Route::get('/tasks/{id}', 'TaskController@show');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/edit/{id}', 'TaskController@update');
 

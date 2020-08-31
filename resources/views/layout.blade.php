@@ -18,10 +18,22 @@
     </head>
     
     <body>
-        <style>body {padding-top: 80px;}</style>
+        <style>
+        body {
+            padding-top: 100px;
+            background-color: #B0E0E6;
+        }
+        
+        .starter-template {
+            padding: 30px 30px;
+            background-color:snow;
+        }
+        </style>
         @include('nav')
         <div class="container">
-            @yield('content')
+            <div class="starter-template">
+                @yield('content')
+            </div>
         </div>
     </body>
 </html>

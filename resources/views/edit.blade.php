@@ -1,32 +1,22 @@
 @extends('layout')
-@section('title','リストの編集')
 
 @section('content')
 <div class='container'>
-    
     <h1>タスク編集</h1>
-    <div>
-        <a href='/tasks' class='btn btn-primary'>Taks Listへ</a>
-    </div>
-    
-    <form action="/tasks" method="POST" class="form-horizontal">
-        
-        {{ csrf_field() }}
-        
+        <div>
+            <a href='/tasks' class='btn btn-primary'>Taks Listへ</a>
+        </div>
+    <form action="{{ action('TaskController@update', ['id' => $task->id]) }}" method="POST" class="form-group">
+    {{ csrf_field() }}
         <div class="form-group">
-            
-        <label for="task" class="col-sm-3control-label">Task</label>
-        
+            <label for="task" class="col-sm-3control-label">Task</label>
             <div class="col-sm-6">
                 <!--入力ずみのタスク名を入力できるようにしている-->
                 <input type="text" name="name" value="{{ $task->name }}" id="task-name" class="form-control">
             </div>
-            
         </div>
-        
         <div class="form-group">
-        
-        <label for="color" class="col-sm-3control-label">color</label>    
+            <label for="color" class="col-sm-3control-label">color</label>    
             <div class="col-sm-6">
                 <!--選択した内容を残して表示させたい-->
                 <select name="color">
@@ -59,25 +49,21 @@
                 <input name="limit" type="date" value="{{ $task->limit }}">
             </div>
         </div>
-        
         <!--詳細を書き入れる部分-->
         <div class="form-group">
         <label for="details" class="col-sm-3control-label">詳細内容</label>
             <div class="col-sm-6">
-                <input type="textarea" name="details"/>
+                <input type="textarea" name="details"/ value="{{ $task->details }}">
             </div>
         </div>
-        
         <!-- Edit Task Button -->
-        
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="button" class='btn btn-outline-primary'>
-                    <!--まだ送信できないので編集する-->
-                    <i class="fa fa-plus">更新</i>
-                </button>
+                <!--8/26編集-->
+                {{ csrf_field() }}
+                <button class="btn btn-success" type="submit">更新</button>
             </div>
         </div>
-        
     </form>
 </div>
+@endsection

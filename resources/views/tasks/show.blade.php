@@ -13,10 +13,8 @@
         <p>詳細：{{ $task->details }}</p>
     </div>
     <div>
-        <form action="/tasks" method="GET">
-            <button>Task Listへ</button>
-        </form>
+        
+        <a href="/tasks" class="btn btn-dark">Task Listへ</a>
+        
     </div>
-    
-    
 @endsection

@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     
-    // protected $guarded = array('id') ;
+    protected $guarded = array('id');
     // public static $rules = array(
     //     'title' => 'required',
     //     'body' => 'required',
     //     );
-        
+    public static $task = array(
+        'name' => 'required',
+        'category' => 'required',
+        'color' => 'required',
+        'limit' => 'required'
+        );
     
     // 8月19日作成
     public function color_show() {

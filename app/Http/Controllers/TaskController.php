@@ -101,10 +101,12 @@ class TaskController extends Controller
         $this->validate($request, Task::$task);
         
         $task = Task::find($request->id);
-        $task = $request->all();
-        unset($task['_token']);
+        // ユーザーから送られてきたデータ全て
+        $task_form = $request->all();
+        // 
+        unset($task_form['_token']);
         
-        $task->fill($task)->save();
+        $task->fill($task_form)->save();
         return redirect('/tasks');
     }
 
