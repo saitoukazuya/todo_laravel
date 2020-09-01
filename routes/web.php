@@ -42,10 +42,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-
-
 Route::get('/tasks/{id}', 'TaskController@show');
-
 
 \URL::forceScheme('https');
 Auth::routes();
@@ -54,3 +51,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/edit/{id}', 'TaskController@update');
 
+// Route::get('tasks', 'TaskController@search');

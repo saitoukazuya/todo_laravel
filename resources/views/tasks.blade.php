@@ -61,12 +61,24 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <!--submitにしないと送信できない-->
-                    <button type="submit" class='btn btn-outline-primary'>
+                    <button type="submit" class='btn btn-success'>
                         <i class="fa fa-plus">Add Task</i>
                     </button>
                 </div>
             </div>
         </form>
+        <!--まだサーチ機能は実装できていない-->
+        <h2>Search Task</h2>
+        <div class="col-sm-4" style="padding:20px 0px; padding-left: 0px">
+            <form class="form-inline" action="{{ url('/tasks') }}">
+                <div class="form-group">
+                    <input type="text" name="keyword" value="{{ $keyword }}" class="form-control">
+                </div>
+                <div style="padding-left: 20px;">
+                    <input type="submit" class="btn btn-info" value="Search">
+                </div>
+            </form>
+        </div>
         @endguest
         <!-- Current Tasks -->
         <!--タスクの一覧表示-->
@@ -88,11 +100,9 @@
                         </td>
                         <td>
                             <a href='/tasks/{{ $task->id }}' class='btn btn-primary'>詳細</a>
-                            <!--<button type="button" class="btn btn-primary">詳細</button>-->
                         </td>
                         <td>
                             <a href="/edit/{{ $task->id }}" class='btn btn-outline-primary'>編集</a>
-                            <!--<button type="button" class="btn btn-outline-primary">編集</button>-->
                         </td>
                         <td>
                             <form action="/tasks/{{ $task->id }}" method="POST"/>
@@ -106,5 +116,5 @@
                 @endforeach
             </tbody>
         </table>
-    @endsection
     </div>
+@endsection

@@ -26,12 +26,12 @@
         
         .starter-template {
             padding: 30px 30px;
-            background-color:snow;
+            background-color: snow;
         }
         </style>
         @include('nav')
         <div class="container">
-            <div class="starter-template">
+            <div class="starter-template rounded shadow-lg">
                 @yield('content')
             </div>
         </div>

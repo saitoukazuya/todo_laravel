@@ -14,7 +14,7 @@
     </div>
     <div>
         
-        <a href="/tasks" class="btn btn-dark">Task Listへ</a>
+        <a href="/tasks" class="btn btn-info">Task Listへ</a>
         
     </div>
 @endsection

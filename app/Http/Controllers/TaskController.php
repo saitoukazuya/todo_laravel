@@ -19,17 +19,43 @@ class TaskController extends Controller
     {
         // TaskモデルのTask:all()メソッドを呼び出し、全てのタスクをDBから取得する
         $tasks = Task::all();
-        
         // 'tasks'はファイル名、[]の中は連想配列で、['キー'=>$tasks]となっている
         // $tasksでタスク一覧が表示できる
-        return view('tasks', ['tasks'=>$tasks]);
+        // return view('tasks', ['tasks'=>$tasks]);
+
+        // 検索機能
+        // 次は検索した内容を表示させる
+        if(!empty($keyword))
+        {
+            $keyword = $request->input('keyword');
+            // $message = "Search word : " . $keyword;
+            $task->where('name','like','%'.$keyword.'%')->get();
+        } else {
+            $keyword = '';
+            // $message = "Search word";
+            $tasks = Task::all();
+        }
+        return view('tasks', ['tasks'=>$tasks, 'keyword'=>$keyword]);
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // search action 追記
+    // public function search(Request $request) 
+    // {
+    //     $tasks = Task::all();
+        
+    //     if(!empty($keyword))
+    //     {
+    //         $keyword = $request->input('keyword');
+    //         // $message = "Search word : " . $keyword;
+    //         $task->where('name','like','%'.$keyword.'%')->get();
+    //     } else {
+    //         $keyword = '';
+    //         // $message = "Search word";
+    //         $tasks = Task::all();
+    //     }
+    //     return view('search', ['tasks'=>$tasks, 'keyword'=>$keyword]);
+    // }
      
      
 
