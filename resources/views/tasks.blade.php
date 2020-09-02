@@ -9,7 +9,6 @@
         <!--タスク追加のためのフォーム-->
         @guest
         @else
-        
         <form action="/tasks" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             <!-- Task Name -->
@@ -52,9 +51,9 @@
             </div>
             <!--詳細を書き入れる部分-->
             <div class="form-group">
-            <label for="details" class="col-sm-3control-label">詳細内容</label>
-                <div class="col-sm-6">
-                    <input type="textarea" name="details"/>
+                <label for="details" class="col-sm-3control-label">詳細内容</label>
+                <div class="col-sm-3">
+                    <input type="textarea" name="details"/ class="form-control">
                 </div>
             </div>
             <!-- Add Task Button -->
@@ -69,13 +68,17 @@
         </form>
         <!--まだサーチ機能は実装できていない-->
         <h2>Search Task</h2>
-        <div class="col-sm-4" style="padding:20px 0px; padding-left: 0px">
-            <form class="form-inline" action="{{ url('/tasks') }}">
+        <div class="col-sm-8" style="padding:10px 0px; padding-left: 0px">
+            <form class="form-inline" action="/search" method="get">
                 <div class="form-group">
-                    <input type="text" name="keyword" value="{{ $keyword }}" class="form-control">
+                    <input type="text" name="name" value="{{ $keyword }}" class="form-control">
                 </div>
-                <div style="padding-left: 20px;">
+                <div class="form-group" style="padding-left: 20px;">
                     <input type="submit" class="btn btn-info" value="Search">
+                </div>
+                <div class="form-group" style="padding-left: 20px;">
+                    <button type='submit' class="btn btn-outline-info">
+                    <a href={{ route('tasks') }}>クリア</a>
                 </div>
             </form>
         </div>
@@ -83,19 +86,13 @@
         <!-- Current Tasks -->
         <!--タスクの一覧表示-->
         <h2>Current Tasks</h2>
-        
         <table class="table table-striped table-hover">
-            <thead>
-                <th>Task</th><th>&nbsp;</th>
-            </thead>
-            
             <tbody>
                 @foreach ($tasks as $task)
                     <tr>
                         <!-- Task name -->
                         <td>
                             <!--タスクのnameプロパティを取得することでDBのnameカラムの値を表示する-->
-                            <!--ここにリンクを追加する予定　8月19日-->
                             <div>{{ $task->name }}</div>
                         </td>
                         <td>
@@ -109,7 +106,7 @@
                                 {{ csrf_field() }}
                                 <!--擬似的にdeleteメソッドとして呼び出している-->
                                 {{ method_field('DELETE') }}
-                                <button type="button" class="btn btn-primary">削除</button>
+                                <button type="button" class="btn btn-outline-danger">削除</button>
                             </form>
                         </td>
                     </tr>

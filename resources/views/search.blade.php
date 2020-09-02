@@ -3,17 +3,13 @@
 @section('content')
 <h2>検索結果</h2>
     <table class="table table-striped table-hover">
-        <thead>
-            <th>Task</th><th>&nbsp;</th>
-        </thead>
-        
         <tbody>
             @foreach ($tasks as $task)
                 <tr>
                     <!-- Task name -->
                     <td>
                         <!--タスクのnameプロパティを取得することでDBのnameカラムの値を表示する-->
-                        <!--ここにリンクを追加する予定　8月19日-->
+                        <!--内容を変更する-->
                         <div>{{ $task->name }}</div>
                     </td>
                     <td>

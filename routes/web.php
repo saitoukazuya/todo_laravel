@@ -29,7 +29,6 @@ Route::get('/', function () {
 // 　TaskControllerのindexメソッドを呼び出している
 Route::get('/tasks', 'TaskController@index')->name('tasks');
 
-
 Route::middleware(['auth'])->group(function () {  
     
     //  TaskControllerのstoreメソッドを呼び出している
@@ -51,4 +50,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/edit/{id}', 'TaskController@update');
 
-// Route::get('tasks', 'TaskController@search');
+Route::get('/search', 'TaskController@index');
