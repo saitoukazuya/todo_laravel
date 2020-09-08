@@ -21,15 +21,17 @@ Route::get('/', function () {
 });
 
 
-//  /tasksにリダイレクトさせる
-// Route::get('/tasks', function(){
-//     return redirect('/tasks');
-// });
+Route::get('/create', function(){
+    return view('/create');
+});
 
 // 　TaskControllerのindexメソッドを呼び出している
 Route::get('/tasks', 'TaskController@index')->name('tasks');
 
+
 Route::middleware(['auth'])->group(function () {  
+    // 追記
+    Route::get('/create', 'TaskController@create');
     
     //  TaskControllerのstoreメソッドを呼び出している
     Route::post('/tasks', 'TaskController@store');

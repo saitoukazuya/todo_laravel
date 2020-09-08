@@ -28,25 +28,44 @@ class TaskController extends Controller
         $keyword = $request->name;
         if($keyword != "")
         {
-            $tasks = Task::where('name','like','%'.$keyword.'%')->get();
-            // 下記が上手くいっていない
-            // return view('search', ['tasks'=>$tasks, 'keyword'=>$keyword]);
+            $tasks = Task::where('name','like','%'.$keyword.'%')->paginate(10);
         } else {
             $keyword = '';
-            $tasks = Task::all();
-            // return view('tasks', ['tasks'=>$tasks, 'keyword'=>$keyword]);
+            $tasks = Task::paginate(3);
         }
-        // 一応サーチ結果は表示される（一覧全てになっている）
-        // return view('search', ['tasks'=>$tasks, 'keyword'=>$keyword]);
         return view('tasks', ['tasks'=>$tasks, 'keyword'=>$keyword]);
         
     }
+    
+    // 追記していく
+    public function create(Request $request)
+    {
+        // dd($request);
+        $this->validate($request, Task::$task);
+        
+        $task = new Task;
+        $tasks = $request->all();
+        
+        unset($tasks[__token]);
+        
+        
+        // データベースに保存する
+        $task->fill($tasks);
+        $task->save();
+
+        // '/tasks'にリダイレクトして一覧表示を行う
+        return redirect('/tasks');
+    }
+    
+    
+    
 
      // タスクの追加、保存を行う目的
     public function store(Request $request)
     {
         // dd($request);
-        //Taskオブジェクト作成
+        $this->validate($request, Task::$task);
+        
         $task = new Task;
         
         // nameプロパティにフォームから送信されたnameパラメータを設定する

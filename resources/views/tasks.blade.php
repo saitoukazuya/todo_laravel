@@ -5,23 +5,32 @@
         <h1>Task List</h1>
         <div>
             <a href='/' class='btn btn-primary'>Topへ</a>
+            <a href='/create' class='btn btn-info'>Createへ</a>
         </div>
         <!--タスク追加のためのフォーム-->
         @guest
         @else
         <form action="/tasks" method="POST" class="form-horizontal">
             {{ csrf_field() }}
+           
+          
             <!-- Task Name -->
             <div class="form-group">
                 <label for="task" class="col-sm-3control-label">Task</label>
                 <div class="col-sm-6">
                     <!--タスクの名前を入力できるようにしている-->
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <input type="text" name="name" id="task-name" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <label for="color" class="col-sm-3control-label">color</label>    
                 <div class="col-sm-6">
+                    @error('color')
+                    <span class="text-danger">{{ $message }}</span><br>
+                    @enderror
                     <select name="color">
                         <option value="" >-色を選択してください-</option>
                         <option value="1" >赤色</option>
@@ -34,6 +43,9 @@
             <div class="form-group">
             <label for="category" class="col-sm-3control-label">category</label>    
                 <div class="col-sm-6">
+                    @error('category')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <select name="category">
                         <option value="" >-カテゴリを選択してください-</option>
                         <option value="1" >重要</option>
@@ -46,6 +58,9 @@
             <div class="form-group">
             <label for="limit" class="col-sm-3control-label">完了期限（入力またはカレンダーから選択）</label>    
                 <div class="col-sm-6">
+                    @error('limit')
+                    <span class="text-danger">{{ $message }}</span><br>
+                    @enderror
                     <input name="limit" type="date">
                 </div>
             </div>
@@ -53,6 +68,7 @@
             <div class="form-group">
                 <label for="details" class="col-sm-3control-label">詳細内容</label>
                 <div class="col-sm-3">
+                    
                     <input type="textarea" name="details"/ class="form-control">
                 </div>
             </div>
@@ -86,27 +102,27 @@
         <!-- Current Tasks -->
         <!--タスクの一覧表示-->
         <h2>Current Tasks</h2>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover col-sm-12">
             <tbody>
                 @foreach ($tasks as $task)
-                    <tr>
+                    <tr class="d-flex">
                         <!-- Task name -->
-                        <td>
+                        <td class="col-md-9">
                             <!--タスクのnameプロパティを取得することでDBのnameカラムの値を表示する-->
                             <div>{{ $task->name }}</div>
                         </td>
-                        <td>
-                            <a href='/tasks/{{ $task->id }}' class='btn btn-primary'>詳細</a>
+                        <td class="col-md-1">
+                            <a href='/tasks/{{ $task->id }}' class='btn btn-primary float-right'>詳細</a>
                         </td>
-                        <td>
-                            <a href="/edit/{{ $task->id }}" class='btn btn-outline-primary'>編集</a>
+                        <td class="col-md-1">
+                            <a href="/edit/{{ $task->id }}" class='btn btn-outline-primary float-right'>編集</a>
                         </td>
-                        <td>
+                        <td class="col-md-1">
                             <form action="/tasks/{{ $task->id }}" method="POST"/>
                                 {{ csrf_field() }}
                                 <!--擬似的にdeleteメソッドとして呼び出している-->
                                 {{ method_field('DELETE') }}
-                                <button type="button" class="btn btn-outline-danger">削除</button>
+                                <button type="button" class='btn btn-outline-danger float-right'>削除</button>
                             </form>
                         </td>
                     </tr>
@@ -114,4 +130,7 @@
             </tbody>
         </table>
     </div>
+    {{ $tasks->links() }}
+
+    
 @endsection
