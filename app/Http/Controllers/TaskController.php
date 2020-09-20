@@ -28,10 +28,10 @@ class TaskController extends Controller
         $keyword = $request->name;
         if($keyword != "")
         {
-            $tasks = Task::where('name','like','%'.$keyword.'%')->paginate(10);
+            $tasks = Task::where('name','like','%'.$keyword.'%')->paginate(100);
         } else {
             $keyword = '';
-            $tasks = Task::paginate(3);
+            $tasks = Task::paginate(5);
         }
         return view('tasks', ['tasks'=>$tasks, 'keyword'=>$keyword]);
         

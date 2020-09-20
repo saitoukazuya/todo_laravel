@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     <!--タスクの名前を入力できるようにしている-->
                     @error('name')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span><br>
                     @enderror
                     <input type="text" name="name" id="task-name" class="form-control">
                 </div>
@@ -44,7 +44,7 @@
             <label for="category" class="col-sm-3control-label">category</label>    
                 <div class="col-sm-6">
                     @error('category')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span><br>
                     @enderror
                     <select name="category">
                         <option value="" >-カテゴリを選択してください-</option>
