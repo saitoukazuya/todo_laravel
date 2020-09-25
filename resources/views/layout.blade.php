@@ -30,10 +30,7 @@
         }
         </style>
         @include('nav')
-        <div class="container">
-            <div class="starter-template rounded shadow-lg">
+
                 @yield('content')
-            </div>
-        </div>
     </body>
 </html>

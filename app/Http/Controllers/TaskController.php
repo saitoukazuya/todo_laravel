@@ -31,7 +31,7 @@ class TaskController extends Controller
             $tasks = Task::where('name','like','%'.$keyword.'%')->paginate(100);
         } else {
             $keyword = '';
-            $tasks = Task::paginate(5);
+            $tasks = Task::paginate(8);
         }
         return view('tasks', ['tasks'=>$tasks, 'keyword'=>$keyword]);
         
